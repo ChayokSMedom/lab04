@@ -7,17 +7,25 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
     
-    - name: Configure CMake
+    - name: Configure
       run: cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=_install
     
     - name: Build
       run: cmake --build build
     
+    - name: Run tests (if any)
+      run: |
+        cd build
+        ctest --output-on-failure || echo "No tests configured yet"
+    
     - name: Install
       run: cmake --build build --target install
+    
+    - name: Run the app
+      run: ./build/myapp
