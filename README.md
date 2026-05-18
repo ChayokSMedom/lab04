@@ -1,5 +1,5 @@
-#Отчёт:
-
+# Отчёт:
+я просто копировала и вставила весь терминал который ушёл на эту работу
 
 ```
 reyne@reyne-VirtualBox:~$ export GITHUB_USERNAME=reyne
